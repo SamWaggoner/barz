@@ -1,4 +1,5 @@
 # this is an added new comment
+# this is a comment on newBranch
 
 # Bars Generator Remade
 # import webbrowser
