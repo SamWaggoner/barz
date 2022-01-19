@@ -83,13 +83,13 @@ def main():
     maxSyllables = input("How many syllables per line, make it fine: ")
     try:
         maxSyllables = int(maxSyllables)
-    except TypeError or ValueError:
+    except ValueError or TypeError:
         print("Please enter an integer number for the number of syllables per line.")
         main()
     barsNum = input("How many bars u want: ")
     try:
         barsNum = int(barsNum)
-    except TypeError or ValueError:
+    except ValueError or TypeError:
         print("Please enter an integer number for the number of bars.")
         main()
         
