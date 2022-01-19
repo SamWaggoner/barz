@@ -2,10 +2,9 @@
 
 # Repo: https://github.com/SamWaggoner/rhymes
 
-import datamuse
 import random
 import requests
-import os
+
 # from gtts import gTTS # for reading out loud, raises an error
 
 # def readAloud(fileName):
