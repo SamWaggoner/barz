@@ -1,41 +1,18 @@
-#this is main
+# Bars Generator V2
 
-# Bars Generator Remade
-# import webbrowser
-# webbrowser.open_new_tab("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 import datamuse
 import random
 import requests
 import os
-# from gtts import gTTS
+# from gtts import gTTS # for reading out loud, raises an error
 
-api = datamuse.Datamuse()
-# word = "chrosome"
-
-# use jja or jjb if random word doesn't work well? test first with chromosome
-
-# 3 examples of each useful get request:
-
-# rhymes = api.words(rel_rhy=word, max=15)
-# choice = random.randint(0,len(rhymes)-1)
-# print(rhymes[choice]["word"])
-
-# homophones = api.words(rel_hom=word, max=15)
-# choice = random.randint(0,len(homophones)-1)
-# print(homophones[choice]["word"])
-
-# predecessors = api.words(rel_bgb=word)
-# print(predecessors)
-# choice = random.randint(0,len(predecessors)-1)
-# print(predecessors[choice]["word"])
-
-def readAloud(fileName):
-    file = open(fileName,"r")
-    file = file.read().replace("\n",",,,")
-    language = "en"
-    speech = gTTS(text = str(file), lang = language, slow = False)
-    speech.save("barz.mp3")
-    os.system("start barz.mp3")
+# def readAloud(fileName):
+#     file = open(fileName,"r")
+#     file = file.read().replace("\n",",,,")
+#     language = "en"
+#     speech = gTTS(text = str(file), lang = language, slow = False)
+#     speech.save("barz.mp3")
+#     os.system("start barz.mp3")
 
 def selectPredecessor(predecessors, currSyl, maxSyl):
     choiceNum = random.randint(0,len(predecessors)-1)
@@ -65,9 +42,6 @@ def addPredecessors(bar,word,currSyl,maxSyl,failCount=0):
 def makeBar(rhymeWord, maxSyllables, usedRhymes = []): # usedRhymes is list of already used rhymes to prevent repeats
     bar = ""
     currSyllables = 0 # syllable count starts at 0, not to exceed max syllables per line as given by user
-
-    # rhymes = api.words(rel_rhy=rhymeWord) # get list of rhyming words using datamuse library. default max length of rhymes is 100
-
     url = "https://api.datamuse.com/words?rel_rhy=" + rhymeWord + "&md=s"
     response = requests.get(url)
     rhymes = response.json()
@@ -117,6 +91,7 @@ def main():
     except TypeError or ValueError:
         print("Please enter an integer number for the number of bars.")
         main()
+        
     # rhymeScheme = input("What type of rhyme scheme would you like to redeem: \
     #     \n\t1. Classic: AAAA scheme, rhymes at the end of every line  \
     #     \n\t2. Sonnet: 14 lines, 10 syllables per line  \
@@ -149,15 +124,6 @@ def main():
 
 main()
 
-
-
-
-
-
-
-"""
-end the line with homonyms or rhymes
-use rhyme schemes
-"""
-
-
+# if you want to Rickroll someone then use the code below
+# import webbrowser
+# webbrowser.open_new_tab("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
