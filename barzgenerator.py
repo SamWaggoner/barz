@@ -1,4 +1,5 @@
 # Bars Generator V2
+# this is a comment on readAloud branch
 
 # Repo: https://github.com/SamWaggoner/rhymes
 
