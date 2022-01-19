@@ -1,5 +1,4 @@
-# this is an added new comment
-# this is a comment on newBranch
+#this is main
 
 # Bars Generator Remade
 # import webbrowser
@@ -8,12 +7,14 @@ import datamuse
 import random
 import requests
 import os
-from gtts import gTTS
+# from gtts import gTTS
 
 api = datamuse.Datamuse()
 # word = "chrosome"
 
 # use jja or jjb if random word doesn't work well? test first with chromosome
+
+# 3 examples of each useful get request:
 
 # rhymes = api.words(rel_rhy=word, max=15)
 # choice = random.randint(0,len(rhymes)-1)
@@ -64,7 +65,13 @@ def addPredecessors(bar,word,currSyl,maxSyl,failCount=0):
 def makeBar(rhymeWord, maxSyllables, usedRhymes = []): # usedRhymes is list of already used rhymes to prevent repeats
     bar = ""
     currSyllables = 0 # syllable count starts at 0, not to exceed max syllables per line as given by user
-    rhymes = api.words(rel_rhy=rhymeWord) # get list of rhyming words using datamuse library. default max length of rhymes is 100
+
+    # rhymes = api.words(rel_rhy=rhymeWord) # get list of rhyming words using datamuse library. default max length of rhymes is 100
+
+    url = "https://api.datamuse.com/words?rel_rhy=" + rhymeWord + "&md=s"
+    response = requests.get(url)
+    rhymes = response.json()
+
     if len(rhymes) == 0: # if there are no rhymes for the word
         print("Sorry, can't find any rhymes for %s in this amount of time" %rhymeWord)
         exit()
@@ -95,9 +102,10 @@ def makeBar(rhymeWord, maxSyllables, usedRhymes = []): # usedRhymes is list of a
     return usedRhymes
 
 def main():
+    # print("rhymeScheme is in the works, just enter a number 1-6")
     # get inputs, sanitize
     rhymeWord = input("What u wanna rhyme with, make it timeless (any single word): ")
-    maxSyllables = input("How many syllables per line, u lookin fine: ")
+    maxSyllables = input("How many syllables per line, make it fine: ")
     try:
         maxSyllables = int(maxSyllables)
     except TypeError or ValueError:
@@ -109,23 +117,23 @@ def main():
     except TypeError or ValueError:
         print("Please enter an integer number for the number of bars.")
         main()
-    rhymeScheme = input("What type of rhyme scheme would you like to redeem: \
-        \n\t1. Classic: AAAA scheme, rhymes at the end of every line  \
-        \n\t2. Sonnet: 14 lines, 10 syllables per line  \
-        \n\t3. Rough Haiku: 3 lines, syllables 5,7,5 per line  \
-        \n\t4. Pentameter: 5 syllables per line (can't do iambic, sorry)  \
-        \n\t5. Limerick: 5 lines, AABBA scheme \
-        \n\t6. Villanelle: 19 lines, comprising 5 tercets (ABA) and a quatrain (ABAA): \
-        \n\t      A1 b A2 / a b A1 / a b A2 / a b A1 / a b A2 / a b A1 A2, capital = refrain \
-        \n\tNote: syllables are imperfect.")
-    try:
-        rhymeScheme = int(rhymeScheme)
-    except TypeError or ValueError:
-        print("Please enter an integer number for your selection.")
-        main()
-    if rhymeScheme < 1 or rhymeScheme > 6:
-        print("Invalid selection.")
-        main()
+    # rhymeScheme = input("What type of rhyme scheme would you like to redeem: \
+    #     \n\t1. Classic: AAAA scheme, rhymes at the end of every line  \
+    #     \n\t2. Sonnet: 14 lines, 10 syllables per line  \
+    #     \n\t3. Rough Haiku: 3 lines, syllables 5,7,5 per line  \
+    #     \n\t4. Pentameter: 5 syllables per line (can't do iambic, sorry)  \
+    #     \n\t5. Limerick: 5 lines, AABBA scheme \
+    #     \n\t6. Villanelle: 19 lines, comprising 5 tercets (ABA) and a quatrain (ABAA): \
+    #     \n\t      A1 b A2 / a b A1 / a b A2 / a b A1 / a b A2 / a b A1 A2, capital = refrain \
+    #     \n\tNote: syllables are imperfect.")
+    # try:
+    #     rhymeScheme = int(rhymeScheme)
+    # except TypeError or ValueError:
+    #     print("Please enter an integer number for your selection.")
+    #     main()
+    # if rhymeScheme < 1 or rhymeScheme > 6:
+    #     print("Invalid selection.")
+    #     main()
         
     # clear the barz.txt file of previous bars
     file = open("barz.txt,","w")
