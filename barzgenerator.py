@@ -1,5 +1,7 @@
 # Bars Generator V2
 
+# Repo: https://github.com/SamWaggoner/rhymes
+
 import datamuse
 import random
 import requests
