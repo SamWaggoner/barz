@@ -157,29 +157,24 @@ def main():
         numSyllables = getUserMaxSyllables()
 
         print("Bars:")
-        usedRhymesA = []
-        usedRhymesA = makeBar(rhymeWordA,numSyllables,usedRhymesA)[0]
-        usedRhymesB = []
-        usedRhymesB = makeBar(rhymeWordB,numSyllables,usedRhymesB)[0]
-        makeBar(rhymeWordA,numSyllables,usedRhymesA)
-        makeBar(rhymeWordB,numSyllables,usedRhymesB)
+        usedRhymes = []
+        usedRhymes = makeBar(rhymeWordA,numSyllables,usedRhymes)[0]
+        usedRhymes = makeBar(rhymeWordB,numSyllables,usedRhymes)[0]
+        makeBar(rhymeWordA,numSyllables,usedRhymes)
+        makeBar(rhymeWordB,numSyllables,usedRhymes)
 
-        usedRhymesC = []
-        usedRhymesC = makeBar(rhymeWordC,numSyllables,usedRhymesC)[0]
-        usedRhymesD = []
-        usedRhymesD = makeBar(rhymeWordD,numSyllables,usedRhymesD)[0]
-        makeBar(rhymeWordC,numSyllables,usedRhymesC)
-        makeBar(rhymeWordD,numSyllables,usedRhymesD)
+        usedRhymes = makeBar(rhymeWordC,numSyllables,usedRhymes)[0]
+        usedRhymes = makeBar(rhymeWordD,numSyllables,usedRhymes)[0]
+        makeBar(rhymeWordC,numSyllables,usedRhymes)
+        makeBar(rhymeWordD,numSyllables,usedRhymes)
 
-        usedRhymesE = []
-        usedRhymesE = makeBar(rhymeWordE,numSyllables,usedRhymesE)[0]
-        usedRhymesF = []
-        usedRhymesF = makeBar(rhymeWordF,numSyllables,usedRhymesF)[0]
-        makeBar(rhymeWordE,numSyllables,usedRhymesE)
-        makeBar(rhymeWordF,numSyllables,usedRhymesF)
+        usedRhymes = makeBar(rhymeWordE,numSyllables,usedRhymes)[0]
+        usedRhymes = makeBar(rhymeWordF,numSyllables,usedRhymes)[0]
+        makeBar(rhymeWordE,numSyllables,usedRhymes)
+        makeBar(rhymeWordF,numSyllables,usedRhymes)
 
-        makeBar(rhymeWordG,numSyllables)
-        makeBar(rhymeWordH,numSyllables)
+        makeBar(rhymeWordG,numSyllables,usedRhymes)
+        makeBar(rhymeWordH,numSyllables,usedRhymes)
 
     # Rough Haiku: 3 lines, syllables 5,7,5 per line
     elif rhymeScheme == 3:
@@ -216,14 +211,35 @@ def main():
     # A1 b A2 / a b A1 / a b A2 / a b A1 / a b A2 / a b A1 A2, capital = refrain
     elif rhymeScheme == 6:
         usedRhymes = []
-        a1 = getRandomWord()
-        a2 = getRandomWord()
-        a = getRandomWord()
-        b = getRandomWord()
+        a1Word = getRandomWord()
+        a2Word = getRandomWord()
+        aWord = getRandomWord()
+        bWord = getRandomWord()
+        syl = random.randint(4,10)
         
-        rhymes1 = makeBar()
+        res1 = makeBar(a1Word,syl,usedRhymes)
+        usedRhymes = res1[0]
+        a1 = res1[1]
+        usedRhymes = makeBar(bWord,syl,usedRhymes)[0]
+        res2 = makeBar(a2Word,syl,usedRhymes)
+        usedRhymes = res2[0]
+        a2 = res2[1]
+        print(a1)
+        print(a2)
 
-        
+        for i in range(2):
+            usedRhymes = makeBar(aWord,syl,usedRhymes)[0]
+            usedRhymes = makeBar(bWord,syl,usedRhymes)[0]
+            print(a1)
+
+            usedRhymes = makeBar(aWord,syl,usedRhymes)[0]
+            usedRhymes = makeBar(bWord,syl,usedRhymes)[0]
+            print(a2)
+
+        usedRhymes = makeBar(aWord,syl,usedRhymes)[0]
+        usedRhymes = makeBar(bWord,syl,usedRhymes)[0]
+        print(a1)
+        print(a2)
         
 
 
