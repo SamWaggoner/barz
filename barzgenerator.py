@@ -146,14 +146,14 @@ def main():
 
     # Sonnet: 14 lines, 10 syllables per line: ABAB, CDCD, EFEF, GH
     elif rhymeScheme == 2:
-        rhymeWordA = getUserRhyme()
-        rhymeWordB = getUserRhyme()
-        rhymeWordC = getUserRhyme()
-        rhymeWordD = getUserRhyme()
-        rhymeWordE = getUserRhyme()
-        rhymeWordF = getUserRhyme()
-        rhymeWordG = getUserRhyme()
-        rhymeWordH = getUserRhyme()
+        rhymeWordA = getRandomWord()
+        rhymeWordB = getRandomWord()
+        rhymeWordC = getRandomWord()
+        rhymeWordD = getRandomWord()
+        rhymeWordE = getRandomWord()
+        rhymeWordF = getRandomWord()
+        rhymeWordG = getRandomWord()
+        rhymeWordH = getRandomWord()
         numSyllables = getUserMaxSyllables()
 
         print("Bars:")
@@ -251,3 +251,5 @@ main()
 # if you want to Rickroll someone then use the code below
 # import webbrowser
 # webbrowser.open_new_tab("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+
+# Repo: https://github.com/SamWaggoner/rhymes
