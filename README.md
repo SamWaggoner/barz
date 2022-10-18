@@ -4,6 +4,6 @@ I made this Python program to create some fun rhymes. When thinking of how I wou
 
 ## Status
 ##### In Progress:
-The computer will read out the lines
+The computer will read the lines out loud after they are generated.
 ##### In Progress:
 The user will have the option to create different types of poems, like limericks or haikus, for example.
